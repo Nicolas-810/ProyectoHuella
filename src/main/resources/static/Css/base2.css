@@ -1,0 +1,68 @@
+body {
+    display: flex;
+  }
+  
+  .navigation-container {
+    background: linear-gradient(to bottom right, #15395f, #020c45);
+    padding: 10px;
+    margin-top: 0px;
+    margin-left: 188px; /* Establece un valor específico para el margen izquierdo */
+  }
+  
+  .navigation-container .link {
+    display: inline-block;
+    margin-right: 20px;
+    color: white;
+    text-decoration: none;
+  }
+  
+  .navigation-container .link:hover {
+    color: rgb(111, 204, 235); /* Cambia el color al pasar el mouse sobre el enlace */
+    transition: background-color 0.3s ease; /* Agrega una transición suave */
+  
+  }
+  
+  .navigation-container a {
+    display: inline-block;
+    margin-right: 20px; /* Espaciado entre los enlaces */
+  }
+  
+  .main-content {
+    flex-grow: 1; /* Toma todo el espacio restante */
+    padding: 20px; /* Espaciado interno */
+    text-align: left; /* Alinea el texto a la izquierda */
+    margin-left: 5cm; /* Deja espacio a la izquierda del contenido */
+  }
+  
+  .rectangle-container {
+    background: linear-gradient(to bottom right, #022e65, #01072c);
+    width: 5cm; /* Ancho de 5 cm */
+    position: fixed; /* Fijar posición */
+    top: auto; /* Reiniciar posición en la parte superior */
+    bottom: 0; /* Colocar en la parte inferior */
+    left: 0; /* Colocar en la esquina izquierda */
+    z-index: 0; /* Colocar en el mismo nivel que el contenido */
+    padding-top: 20px; /* Ajusta el espaciado superior */
+  }
+  
+  .rectangle-container .link {
+    display: block; /* Alinea los enlaces en línea recta hacia abajo */
+    color: white; /* Color de texto predeterminado */
+    text-decoration: none; /* Quita subrayado */
+    padding: 10px; /* Ajusta el espaciado interno de los enlaces */
+  }
+  
+  .rectangle-container .link:hover {
+    background-color: rgba(90, 150, 228, 0.1); /* Cambia el color de fondo al pasar el mouse */
+    transition: background-color 0.3s ease; /* Agrega una transición suave */
+  }
+  /* Ajusta la altura para que el rectángulo se extienda desde el encabezado hasta el pie de página */
+  .rectangle-container {
+    height: calc(87vh);
+  }
+  
+  #rectangulo-texto {
+    color: rgb(255, 255, 255);
+    font-size: 18px;
+  }
+  

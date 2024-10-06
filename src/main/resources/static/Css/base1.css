@@ -1,0 +1,36 @@
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh; /* Establece el tamaño mínimo de la ventana */
+    display: flex;
+    flex-direction: column; /* Alinea el contenido en una columna */
+  }
+  
+  header {
+    background: linear-gradient(to bottom right, #022e65, #01072c);
+    color: #fff1b2;
+    padding: 10px;
+  }
+  
+  main {
+    flex: 1; /* Hace que el contenido principal ocupe todo el espacio disponible */
+    padding: 20px;
+  }
+  
+  footer {
+    background-color: #04072c;
+    color: #f7e7a6;
+    text-align: center;
+    padding: 10px;
+  }
+  
+  .link {
+    color: #fbfbfb;/* cambia color del texto, como cerrar sesion*/
+    text-decoration: none;
+  }
+  
+  .link:hover {
+    color: #105cf4; /* Cambia el color al pasar el ratón */
+  }
+  
+  

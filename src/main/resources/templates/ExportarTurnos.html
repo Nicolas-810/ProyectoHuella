@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Control - Exportar Turnos</title>
+    <link rel="icon" type="image/png" href="/Imagen/ico.png">
+    <link rel="stylesheet" href="/Css/base1.css">
+    <link rel="stylesheet" href="/Css/base2.css">
+</head>
+<body>
+    <header>
+        <img src="/Imagen/Logo.png" alt="Segurity" />
+    </header>
+
+    <div class="main-content">
+        <h2>EXPORTAR TURNOS</h2>
+        
+        <!-- Mostrar mensaje de error si ocurre algún problema -->
+        <div th:if="${error}">
+            <p style="color: red;" th:text="${error}"></p>
+        </div>
+
+        <!-- Botón para exportar los turnos a un archivo Excel -->
+        <div class="export-section">
+            <p>Haga clic en el botón para descargar la lista de turnos asignados en formato Excel:</p>
+            <a href="/exportarturnos" class="btn btn-success">Exportar Turnos</a>
+        </div>
+    </div>
+
+    <div class="rectangle-container">
+        <a href="/crearturnos" class="link">Volver</a>
+    </div>
+</body>
+</html>

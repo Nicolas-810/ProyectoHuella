@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Control - Crear Empleado</title>
+    <link rel="icon" type="image/png" href="Imagen/ico.png">
+    <link rel="stylesheet"  href="Css/base1.css">
+    <link rel="stylesheet"  href="Css/base2.css">
+</head>
+
+<body>
+
+<header>
+    <img src="Imagen/Logo.png" alt="Segurity" />
+</header>
+
+<div class="main-content">
+    <h2>CREAR EMPLEADO NUEVO</h2>
+    <form th:object="${employee}" th:action="@{/employee/guardar}" method="POST" class="form">
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+        <div class="form-group">
+            <label for="cedula">Cedula:</label>
+            <input type="text" id="cedula" name="cedula" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="nombreCompleto">Nombre Completo del Empleado:</label>
+            <input type="text" id="nombreCompleto" name="nombreCompleto" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="rol">Rol:</label>
+            <input type="text" id="rol" name="rol" class="form-control" required>
+        </div>
+        <button class="btn btn-primary">Guardar Empleado</button>
+    </form>
+</div>
+
+<div class="rectangle-container">
+    <a href="/employee/lista" class="link">Volver</a>
+</div>
+
+</body>
+</html>

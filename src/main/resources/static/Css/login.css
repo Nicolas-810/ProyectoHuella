@@ -1,0 +1,86 @@
+/* Estilos para el cuerpo de la página */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(to bottom right, #3689e8, #00072d);
+  }
+  
+  /* Estilos para el contenedor del formulario de inicio de sesión */
+  .login-container {
+    background-color: #ebeced; 
+    padding: 30px; /* Espaciado interno */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Sombra */
+    color: #000000; /* Color de texto */
+    width: 350px;
+    height: 350px; /* Altura aumentada */
+    border-radius: 10px; /* Bordes redondeados */
+  }
+  
+  /* Estilos para los grupos de formularios */
+  .form-group {
+    position: 5px;
+  }
+  
+  /* Estilos para las etiquetas de los formularios */
+  label {
+    display: block;
+    font-weight: bold;
+    color: #03073d; /* Color de texto para los labels */
+  }
+  
+  /* Estilos para los campos de entrada de texto */
+  input {
+    width: calc(100% - 20px); /* Ancho ajustado */
+    padding: 10px;
+    border: none;
+    border-radius: 20px; /* Bordes redondeados */
+    background-color: #ffffff;
+    color: #000000; 
+    font-size: 16px;
+    margin: 10px 0; /* Espaciado entre los campos */
+  }
+  
+  /* Estilos para el botón "INICIAR SESIÓN" */
+  button {
+    width: calc(100% - 20px); /* Ancho ajustado */
+    padding: 10px;
+    background-color: #09194c; /* Cambiamos el color a azul rey oscuro */
+    color: #ffffff; /* Texto en color blanco */
+    border: none;
+    border-radius: 20px; /* Bordes redondeados */
+    cursor: pointer;
+    margin-top: 10px; /* Espaciado arriba */
+  }
+  
+  /* Estilos para los botones al pasar el ratón por encima */
+  button:hover {
+    background-color: #10046c; /* Cambiamos el color al pasar el ratón por encima */
+  }
+  
+  /* Estilos para el mensaje de inicio de sesión */
+  #login-message {
+    margin-top: 15px;
+    color: red; 
+  }
+  
+  /* Estilos para el contenedor del título */
+  .title-container {
+    background-color: #06143f; /* Color azul rey oscuro */
+    padding-top: 10px; /* Espaciado interno en la parte superior */
+    padding-bottom: 10px; /* Espaciado interno en la parte inferior */
+    max-width: 500px; /* Ancho máximo */
+    margin: 0 auto; /* Centra el contenedor horizontalmente */
+  }
+  
+  /* Estilos para el título "USER LOGIN" */
+  #title {
+    font-size: 24px; /* Tamaño de fuente */
+    color: #ffffff; /* Color de texto blanco */
+    text-align: center; /* Centrado */
+  }
+  
