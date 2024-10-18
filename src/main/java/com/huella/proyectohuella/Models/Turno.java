@@ -17,11 +17,12 @@ import java.time.LocalDateTime;
 public class Turno {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
     
+    private Long id;
     private String turno;
     private LocalDateTime fechaAsignacion;
 
-    @ManyToOne
+    @OneToOne
+    @JoinColumn (name = "employee_id")
     private Employee employee;
 }
