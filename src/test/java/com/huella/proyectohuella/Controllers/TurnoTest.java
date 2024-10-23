@@ -1,4 +1,4 @@
-package com.huella.proyectohuella;
+package com.huella.proyectohuella.Controllers;
 
 import com.huella.proyectohuella.Models.Turno;
 import org.junit.jupiter.api.BeforeEach;

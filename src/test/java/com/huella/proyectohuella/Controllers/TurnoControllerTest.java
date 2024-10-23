@@ -1,6 +1,5 @@
-package com.huella.proyectohuella;
+package com.huella.proyectohuella.Controllers;
 
-import com.huella.proyectohuella.Controllers.TurnoController;
 import com.huella.proyectohuella.Models.Employee;
 import com.huella.proyectohuella.Models.Turno;
 import com.huella.proyectohuella.Services.EmployeeService;
@@ -33,7 +32,7 @@ class TurnoControllerTest {
     private Model model;
 
     @InjectMocks
-    private TurnoController turnoController;  // Inyecta la clase real TurnoController, no la clase de prueba
+    private TurnoController turnoController;
 
     @BeforeEach
     void setUp() {
