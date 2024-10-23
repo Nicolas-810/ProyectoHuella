@@ -4,13 +4,13 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Table;
-import java.util.List;
 
 @Getter
 @Setter
@@ -26,8 +26,11 @@ public class Employee {
     private String nombreCompleto;
     private String rol;
 
-    @OneToMany(mappedBy = "employee")
-    private List<Turno> turnos;
+    @OneToOne(mappedBy = "employee", cascade = CascadeType.ALL)
+    private Turno turnos;
+
+    @OneToOne(mappedBy = "employee", cascade = CascadeType.ALL)
+    private User user;
     
     @Override
     public String toString() {

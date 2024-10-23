@@ -1,5 +1,18 @@
-version: '3'
 services:
-  app:
+  postgres:
+    image: postgres:latest
     environment:
-      - SPRING_PROFILES_ACTIVE=test
+      POSTGRES_DB: proyecto
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+
+  app:
+    build: .
+    depends_on:
+      - postgres
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/proyecto
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
