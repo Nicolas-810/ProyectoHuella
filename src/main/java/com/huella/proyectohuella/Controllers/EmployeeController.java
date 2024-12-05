@@ -46,9 +46,9 @@ public class EmployeeController {
         return "ListaEmpleado";
     }
 
-    @GetMapping("/editar/{id}")
-    public String mostrarFormularioEditar(@PathVariable Long id, Model model) {
-        Employee empleado = employeeService.findById(id);
+    @GetMapping("/editar/{idEmpleado}")
+    public String mostrarFormularioEditar(@PathVariable Long idEmpleado, Model model) {
+        Employee empleado = employeeService.findById(idEmpleado);
         if (empleado != null) {
             model.addAttribute("employee", empleado);
             return "editarEmpleado";
@@ -57,11 +57,16 @@ public class EmployeeController {
         }
     }
 
-    @PostMapping("/actualizar/{id}")
-    public String actualizarEmpleado(@PathVariable Long id, @ModelAttribute Employee updatedEmployee, RedirectAttributes redirectAttributes) {
-        logger.info("Llamada a actualizarEmpleado con id: {}", id);
+    @PostMapping("/actualizar/{idEmpleado}")
+    public String actualizarEmpleado(@PathVariable Long idEmpleado, @ModelAttribute Employee updatedEmployee, RedirectAttributes redirectAttributes) {
+        logger.info("Llamada a actualizarEmpleado con idEmpleado: {}", idEmpleado);
         try {
-            employeeService.updateEmployee(id, updatedEmployee);
+            Employee existingEmployee = employeeService.findById(idEmpleado);
+            if (existingEmployee == null) {
+                redirectAttributes.addFlashAttribute("error", "Empleado no encontrado.");
+                return "redirect:/employee/lista";
+            }
+            employeeService.updateEmployee(idEmpleado, updatedEmployee);
             redirectAttributes.addFlashAttribute("mensaje", "Empleado actualizado correctamente");
         } catch (Exception e) {
             redirectAttributes.addFlashAttribute("error", "Error al actualizar empleado: " + e.getMessage());
@@ -69,10 +74,10 @@ public class EmployeeController {
         return "redirect:/employee/lista";
     }
 
-    @PostMapping("/eliminar/{id}")
-    public String eliminarEmpleado(@PathVariable Long id, RedirectAttributes redirectAttributes) {
+    @PostMapping("/eliminar/{idEmpleado}")
+    public String eliminarEmpleado(@PathVariable Long idEmpleado, RedirectAttributes redirectAttributes) {
         try {
-            employeeService.deleteById(id);
+            employeeService.deleteById(idEmpleado);
             redirectAttributes.addFlashAttribute("mensaje", "Empleado eliminado correctamente");
         } catch (Exception e) {
             redirectAttributes.addFlashAttribute("error", "Error al eliminar empleado: " + e.getMessage());

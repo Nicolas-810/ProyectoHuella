@@ -28,22 +28,22 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public void deleteById(Long id) {
-        employeeRepository.deleteById(id);
+    public void deleteById(Long idEmpleado) {
+        employeeRepository.deleteById(idEmpleado);
     }
 
     @Override
-    public Employee findById(Long id) {
-        return employeeRepository.findById(id).orElse(null);
+    public Employee findById(Long idEmpleado) {
+        return employeeRepository.findById(idEmpleado).orElse(null);
     }
 
     @Override
-    public Employee updateEmployee(Long id, Employee updatedEmployee) {
-        return employeeRepository.findById(id)
+    public Employee updateEmployee(Long idEmpleado, Employee updatedEmployee) {
+        return employeeRepository.findById(idEmpleado)
                 .map(employee -> {
-                    updatedEmployee.setId(id);
+                    updatedEmployee.setIdEmpleado(idEmpleado);
                     return employeeRepository.save(updatedEmployee);
                 })
-                .orElseThrow(() -> new NoSuchElementException("No se encontró el empleado con el ID: " + id));
+                .orElseThrow(() -> new NoSuchElementException("No se encontró el empleado con el ID: " + idEmpleado));
     }
 }

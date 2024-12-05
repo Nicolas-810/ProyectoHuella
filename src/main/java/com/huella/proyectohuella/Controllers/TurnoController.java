@@ -42,9 +42,9 @@ public class TurnoController {
     for (Employee empleado : empleados) {
         Turno ultimoTurno = turnoService.findLastTurnoByEmployee(empleado);
         if (ultimoTurno != null) {
-            turnosAsignados.put(empleado.getId(), ultimoTurno.getTurno());
+            turnosAsignados.put(empleado.getIdEmpleado(), ultimoTurno.getTurno());
         } else {
-            turnosAsignados.put(empleado.getId(), "Sin asignar");
+            turnosAsignados.put(empleado.getIdEmpleado(), "Sin asignar");
         }
     }
     

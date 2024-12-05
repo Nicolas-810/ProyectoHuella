@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
     <link rel="stylesheet" href="/Css/base2.css">
     <link rel="stylesheet" href="/Css/tabla.css">
 </head>
+
 <body>
     <header>
         <img src="/Imagen/Logo.png" alt="Segurity" />
@@ -29,24 +31,28 @@
                 <tr>
                     <th>ID</th>
                     <th>Cédula</th>
-                    <th>Nombre Completo</th>
+                    <th>Nombres</th>
+                    <th>Apellidos</th>
                     <th>Rol</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
                 <tr th:each="employee : ${employees}">
-                    <td th:text="${employee.id}"></td>
+                    <td th:text="${employee.idEmpleado}"></td>
                     <td th:text="${employee.cedula}"></td>
-                    <td th:text="${employee.nombreCompleto}"></td>
+                    <td th:text="${employee.nombres}"></td>
+                    <td th:text="${employee.apellidos}"></td>
                     <td th:text="${employee.rol}"></td>
                     <td>
-                        <a th:href="@{/employee/editar/{id}(id=${employee.id})}" class="btn btn-primary">Editar</a>
-                        <form th:action="@{/employee/eliminar/{id}(id=${employee.id})}" method="post" style="display: inline;">
+                        <a th:href="@{/employee/editar/{idEmpleado}(id=${employee.idEmpleado})}" class="btn btn-primary">Editar</a>
+                        <form th:action="@{/employee/eliminar/{idEmpleado}(idEmpleado=${employee.idEmpleado})}" method="post"
+                            style="display: inline;">
                             <button type="submit" class="btn btn-danger">Eliminar</button>
                         </form>
                     </td>
                 </tr>
+
             </tbody>
         </table>
         <a href="/CrearEmpleado" class="btn btn-success">Crear Nuevo Empleado</a>
@@ -57,5 +63,5 @@
     </div>
 
 </body>
-</html>
 
+</html>

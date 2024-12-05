@@ -26,7 +26,8 @@
             <thead>
                 <tr>
                     <th>Cédula</th>
-                    <th>Nombre Completo</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
                     <th>Turno Asignado</th> <!-- Nueva columna para mostrar el turno actual -->
                     <th>Acción</th>
                 </tr>
@@ -34,13 +35,14 @@
             <tbody>
                 <tr th:each="employee : ${employees}">
                     <td th:text="${employee.cedula}"></td>
-                    <td th:text="${employee.nombreCompleto}"></td>
+                    <td th:text="${employee.nombres}"></td>
+                    <td th:text="${employee.apellidos}"></td>
                     <!-- Mostrar el turno asignado, si no tiene, mostrar "Sin asignar" -->
-                    <td th:text="${turnosAsignados[employee.id]}"></td> <!-- Aquí se muestra el turno asignado -->
+                    <td th:text="${turnosAsignados[employee.idEmpleado]}"></td> <!-- Aquí se muestra el turno asignado -->
                     <td>
                         <form method="POST" th:action="@{/asignarTurno}">
                             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-                            <input type="hidden" name="employeeId" th:value="${employee.id}" />
+                            <input type="hidden" name="employeeId" th:value="${employee.idEmpleado}" />
                             <select name="turno" required>
                                 <option value="">Seleccionar turno</option>
                                 <option value="turno 1">Turno 1</option>

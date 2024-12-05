@@ -43,7 +43,7 @@ class TurnoControllerTest {
     void testAsignarTurnoSuccess() {
         // Simulación de un empleado encontrado
         Employee empleado = new Employee();
-        empleado.setId(1L);
+        empleado.setIdEmpleado(1L);
         when(employeeService.findById(1L)).thenReturn(empleado);
 
         // Simulación de que el empleado no tiene un turno reciente
@@ -78,7 +78,7 @@ class TurnoControllerTest {
     void testAsignarTurnoErrorCambioReciente() {
         // Simulación de un empleado encontrado
         Employee empleado = new Employee();
-        empleado.setId(1L);
+        empleado.setIdEmpleado(1L);
         when(employeeService.findById(1L)).thenReturn(empleado);
 
         // Simulación de que el empleado tiene un turno reciente

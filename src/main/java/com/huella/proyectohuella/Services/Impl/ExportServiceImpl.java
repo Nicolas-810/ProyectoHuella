@@ -47,7 +47,8 @@ public class ExportServiceImpl implements ExportService {
         for (Turno turno : turnos) {
             Row row = sheet.createRow(rowNum++);
             row.createCell(0).setCellValue(turno.getId());
-            row.createCell(1).setCellValue(turno.getEmployee().getNombreCompleto());  // Suponiendo que el modelo Employee tiene un campo nombre
+            row.createCell(1).setCellValue(turno.getEmployee().getNombres());  // Suponiendo que el modelo Employee tiene un campo nombre
+            row.createCell(1).setCellValue(turno.getEmployee().getApellidos());  // Suponiendo que el modelo Employee tiene un campo nombre
             row.createCell(2).setCellValue(turno.getTurno());
             row.createCell(3).setCellValue(turno.getFechaAsignacion().toString());
         }
