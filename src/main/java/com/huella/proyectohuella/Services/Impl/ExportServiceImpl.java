@@ -9,6 +9,8 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.time.DayOfWeek;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -37,19 +39,71 @@ public class ExportServiceImpl implements ExportService {
 
         // Crear el encabezado de la tabla
         Row headerRow = sheet.createRow(0);
-        headerRow.createCell(0).setCellValue("ID");
-        headerRow.createCell(1).setCellValue("Empleado");
-        headerRow.createCell(2).setCellValue("Turno");
-        headerRow.createCell(3).setCellValue("Fecha Asignación");
+        headerRow.createCell(0).setCellValue("Empleado");
+        headerRow.createCell(1).setCellValue("Turno");
+        headerRow.createCell(2).setCellValue("Lunes");
+        headerRow.createCell(3).setCellValue("Martes");
+        headerRow.createCell(4).setCellValue("Miércoles");
+        headerRow.createCell(5).setCellValue("Jueves");
+        headerRow.createCell(6).setCellValue("Viernes");
+        headerRow.createCell(7).setCellValue("Sábado");
+        headerRow.createCell(8).setCellValue("Domingo");
 
         // Rellenar las filas con los datos de los turnos
         int rowNum = 1;
         for (Turno turno : turnos) {
             Row row = sheet.createRow(rowNum++);
-            row.createCell(0).setCellValue(turno.getId());
-            row.createCell(1).setCellValue(turno.getEmployee().getNombreCompleto());  // Suponiendo que el modelo Employee tiene un campo nombre
-            row.createCell(2).setCellValue(turno.getTurno());
-            row.createCell(3).setCellValue(turno.getFechaAsignacion().toString());
+            row.createCell(0).setCellValue(turno.getEmployee().getNombreCompleto()); // Nombre del empleado
+            row.createCell(1).setCellValue(turno.getTurno()); // Turno asignado
+
+            // Obtener la fecha de asignación
+            LocalDateTime fechaAsignacion = turno.getFechaAsignacion();
+            String lunes = "Sin asignar";
+            String martes = "Sin asignar";
+            String miercoles = "Sin asignar";
+            String jueves = "Sin asignar";
+            String viernes = "Sin asignar";
+            String sabado = "Sin asignar";
+            String domingo = "Sin asignar";
+
+            // Asignar la hora correspondiente al día de la semana
+            if (fechaAsignacion != null) {
+                DayOfWeek dayOfWeek = fechaAsignacion.getDayOfWeek();
+                String horaAsignada = fechaAsignacion.toLocalTime().toString();
+
+                switch (dayOfWeek) {
+                    case MONDAY:
+                        lunes = horaAsignada;
+                        break;
+                    case TUESDAY:
+                        martes = horaAsignada;
+                        break;
+                    case WEDNESDAY:
+                        miercoles = horaAsignada;
+                        break;
+                    case THURSDAY:
+                        jueves = horaAsignada;
+                        break;
+                    case FRIDAY:
+                        viernes = horaAsignada;
+                        break;
+                    case SATURDAY:
+                        sabado = horaAsignada;
+                        break;
+                    case SUNDAY:
+                        domingo = horaAsignada;
+                        break;
+                }
+            }
+
+            // Llenar las celdas con las horas asignadas
+            row.createCell(2).setCellValue(lunes);
+            row.createCell(3).setCellValue(martes);
+            row.createCell(4).setCellValue(miercoles);
+            row.createCell(5).setCellValue(jueves);
+            row.createCell(6).setCellValue(viernes);
+            row.createCell(7).setCellValue(sabado);
+            row.createCell(8).setCellValue(domingo);
         }
 
         // Escribir el archivo Excel a la respuesta

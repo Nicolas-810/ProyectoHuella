@@ -1,35 +1,117 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema de Control - Exportar Turnos</title>
-    <link rel="icon" type="image/png" href="/Imagen/ico.png">
-    <link rel="stylesheet" href="/Css/base1.css">
-    <link rel="stylesheet" href="/Css/base2.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exportar Turnos</title>
+    <link rel="stylesheet" href="/Css/base1.css" />
+    <link rel="stylesheet" href="/Css/base2.css" />
+    <style>
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      th {
+        background-color: #022e65;
+        color: white;
+        padding: 10px;
+      }
+      td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: center;
+      }
+      .btn {
+        background-color: #022e65;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 25px;
+        font-size: 16px;
+        cursor: pointer;
+        text-align: center;
+        transition: background-color 0.3s ease;
+      }
+
+      .btn:hover {
+        background-color: #022e65;
+      }
+    </style>
+  </head>
+  <body>
     <header>
-        <img src="/Imagen/Logo.png" alt="Segurity" />
+      <img src="/Imagen/Logo.png" alt="Segurity" />
     </header>
 
     <div class="main-content">
-        <h2>EXPORTAR TURNOS</h2>
-        
-        <!-- Mostrar mensaje de error si ocurre algún problema -->
-        <div th:if="${error}">
-            <p style="color: red;" th:text="${error}"></p>
-        </div>
+      <h2>Información de Ingreso Empleados</h2>
 
-        <!-- Botón para exportar los turnos a un archivo Excel -->
-        <div class="export-section">
-            <p>Haga clic en el botón para descargar la lista de turnos asignados en formato Excel:</p>
-            <a href="/exportarturnos" class="btn btn-success">Exportar Turnos</a>
-        </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Empleado</th>
+            <th>Turno</th>
+            <th>Lun</th>
+            <th>Mar</th>
+            <th>Mié</th>
+            <th>Jue</th>
+            <th>Vie</th>
+            <th>Sáb</th>
+            <th>Dom</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Ruben Dario Torres</td>
+            <td>turno 1</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Priscilla Alvarado</td>
+            <td>turno 1</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Nicolas Taborda</td>
+            <td>turno 2</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="export-section">
+        <p>
+          Haga clic en el botón para descargar la lista de turnos asignados en
+          formato Excel:
+        </p>
+        <a href="/exportarturnos" class="btn btn-success">Exportar Turnos</a>
+      </div>
     </div>
 
     <div class="rectangle-container">
-        <a href="/crearturnos" class="link">Volver</a>
+      <a href="/crearturnos" class="link">Volver</a>
     </div>
-</body>
+
+    <footer class="footer">
+      <p>&copy; 2030 Todos los derechos reservados</p>
+    </footer>
+  </body>
 </html>

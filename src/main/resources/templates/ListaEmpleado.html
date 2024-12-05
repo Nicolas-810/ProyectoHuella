@@ -1,61 +1,68 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sistema de Control - Lista de Empleados</title>
-    <link rel="icon" type="image/png" href="/Imagen/ico.png">
-    <link rel="stylesheet" href="/Css/base1.css">
-    <link rel="stylesheet" href="/Css/base2.css">
-    <link rel="stylesheet" href="/Css/tabla.css">
-</head>
-<body>
+    <link rel="icon" type="image/png" href="/Imagen/ico.png" />
+    <link rel="stylesheet" href="/Css/base1.css" />
+    <link rel="stylesheet" href="/Css/base2.css" />
+    <link rel="stylesheet" href="/Css/tabla.css" />
+  </head>
+  <body>
     <header>
-        <img src="/Imagen/Logo.png" alt="Segurity" />
+      <img src="/Imagen/Logo.png" alt="Segurity" />
     </header>
 
     <div class="navigation-container">
-        <a href="/inicio" class="link">Inicio</a>
-        <a href="/crearturnos" class="link">Turnos</a>
-        <a href="/employee/lista" class="link">Lista Empleados</a>
-        <a href="/user/EstadoUsuario" class="link">Lista Usuario</a>
-        <a href="/login" class="link">Cerrar sesión</a>
+      <a href="/inicio" class="link">Inicio</a>
+      <a href="/crearturnos" class="link">Turnos</a>
+      <a href="/employee/lista" class="link">Lista Empleados</a>
+      <a href="/user/EstadoUsuario" class="link">Lista Usuario</a>
+      <a href="/login" class="link">Cerrar sesión</a>
     </div>
 
     <div class="main-content">
-        <h1>Lista de Empleados</h1>
-        <table class="custom-table">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Cédula</th>
-                    <th>Nombre Completo</th>
-                    <th>Rol</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="employee : ${employees}">
-                    <td th:text="${employee.id}"></td>
-                    <td th:text="${employee.cedula}"></td>
-                    <td th:text="${employee.nombreCompleto}"></td>
-                    <td th:text="${employee.rol}"></td>
-                    <td>
-                        <a th:href="@{/employee/editar/{id}(id=${employee.id})}" class="btn btn-primary">Editar</a>
-                        <form th:action="@{/employee/eliminar/{id}(id=${employee.id})}" method="post" style="display: inline;">
-                            <button type="submit" class="btn btn-danger">Eliminar</button>
-                        </form>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <a href="/CrearEmpleado" class="btn btn-success">Crear Nuevo Empleado</a>
+      <h1>Lista de Empleados</h1>
+      <table class="custom-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Cédula</th>
+            <th>Nombre Completo</th>
+            <th>Rol</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="employee : ${employees}">
+            <td th:text="${employee.id}"></td>
+            <td th:text="${employee.cedula}"></td>
+            <td th:text="${employee.nombreCompleto}"></td>
+            <td th:text="${employee.rol}"></td>
+            <td>
+              <a
+                th:href="@{/employee/editar/{id}(id=${employee.id})}"
+                class="btn btn-primary"
+                >Editar</a
+              >
+              <form
+                th:action="@{/employee/eliminar/{id}(id=${employee.id})}"
+                method="post"
+                style="display: inline"
+              >
+                <button type="submit" class="btn btn-danger">Eliminar</button>
+              </form>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <a href="/CrearEmpleado" class="btn btn-success">Crear Nuevo Empleado</a>
     </div>
 
-
-    <div class="rectangle-container">
-    </div>
-
-</body>
+    <div class="rectangle-container"></div>
+    <footer class="footer">
+      <p>&copy; 2030 Todos los derechos reservados</p>
+    </footer>
+  </body>
 </html>
-
