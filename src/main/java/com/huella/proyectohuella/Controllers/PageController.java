@@ -45,4 +45,9 @@ public class PageController {
     public String ExportarTurnos() {
         return "ExportarTurnos";
     }
+
+    @GetMapping("/Vacaciones")
+    public String Vacaciones() {
+        return "Vacaciones";
+    }
 }

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exportar Turnos</title>
+    <link rel="icon" type="image/png" href="Imagen/ico.png" />
+    <link rel="stylesheet" href="/Css/base1.css" />
+    <link rel="stylesheet" href="/Css/base2.css" />
+    <style>
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      th {
+        background-color: #022e65;
+        color: white;
+        padding: 10px;
+      }
+      td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: center;
+      }
+      .btn {
+        background-color: #022e65;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 25px;
+        font-size: 16px;
+        cursor: pointer;
+        text-align: center;
+        transition: background-color 0.3s ease;
+      }
+
+      .btn:hover {
+        background-color: #022e65;
+      }
+
+      /* Estilo para la ventana emergente */
+      .popup {
+        display: none;
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        justify-content: center;
+        align-items: center;
+      }
+
+      .popup-content {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+      }
+
+      .close {
+        background-color: red;
+        color: white;
+        border: none;
+        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <img src="/Imagen/Logo.png" alt="Segurity" />
+    </header>
+
+    <div class="main-content">
+      <h2>Vacaciones de los empleados</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Empleado</th>
+            <th>Estado</th>
+            <th>Fecha Inicio</th>
+            <th>Fecha Fin</th>
+            <th>Acción</th> <!-- Columna para el botón -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Ruben Dario Torres</td>
+            <td>Disponible</td>
+            <td>15 de Diciembre 2024</td>
+            <td>5 de enero 2025</td>
+            <td><button class="btn" onclick="notificarEmpleado('Ruben Dario Torres', 'Disponible', '15 de Diciembre 2024', '5 de enero 2025')">Notificar</button></td>
+          </tr>
+          <tr>
+            <td>Priscilla Alvarado</td>
+            <td>No Disponible</td>
+            <td></td>
+            <td></td>
+            <td><button class="btn" onclick="notificarEmpleado('Priscilla Alvarado', 'No Disponible', '', '')">Notificar</button></td>
+          </tr>
+          <tr>
+            <td>Nicolas Taborda</td>
+            <td>No Disponible</td>
+            <td></td>
+            <td></td>
+            <td><button class="btn" onclick="notificarEmpleado('Nicolas Taborda', 'No Disponible', '', '')">Notificar</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Popup de notificación -->
+    <div id="popup" class="popup">
+      <div class="popup-content">
+        <h3>Empleado notificado</h3>
+        <p id="popup-message"></p>
+        <button class="close" onclick="cerrarPopup()">Cerrar</button>
+      </div>
+    </div>
+
+    <div class="rectangle-container">
+      <a href="/crearturnos" class="link">Volver</a>
+    </div>
+
+    <footer class="footer">
+      <p>&copy; 2030 Todos los derechos reservados</p>
+    </footer>
+
+    <script>
+      function notificarEmpleado(nombre, estado, fechaInicio, fechaFin) {
+        // Mostrar mensaje en el popup
+        const message = `Empleado: ${nombre}\nEstado: ${estado}\nFecha de Inicio: ${fechaInicio}\nFecha de Fin: ${fechaFin}`;
+        document.getElementById('popup-message').innerText = message;
+        
+        // Aquí deberías agregar la lógica para enviar el correo (lo harías a través del backend con un servicio de correo como JavaMail o algo similar)
+
+        // Mostrar el popup
+        document.getElementById('popup').style.display = 'flex';
+
+        // Aquí deberías hacer el envío del correo (usando AJAX o un formulario que se encargue del backend)
+        alert('El correo ha sido enviado');
+      }
+
+      function cerrarPopup() {
+        // Cerrar el popup
+        document.getElementById('popup').style.display = 'none';
+      }
+    </script>
+  </body>
+</html>
