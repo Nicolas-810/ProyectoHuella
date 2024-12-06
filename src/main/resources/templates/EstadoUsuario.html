@@ -23,58 +23,41 @@
     </div>
 
     <div class="main-content">
-      <h1>Lista de Usuarios</h1>
-      <table class="custom-table">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Nombre de Usuario</th>
-            <th>Contraseña</th>
-            <th>Rol</th>
-            <th>Estado</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr th:each="user : ${users}">
-            <td th:text="${user.id}"></td>
-            <td th:text="${user.username}"></td>
-            <td th:text="${user.password}"></td>
-            <td th:text="${user.rol}"></td>
-            <td th:text="${user.activo ? 'Activo' : 'Desactivado'}"></td>
-            <td>
-              <form
-                th:action="@{/user/cambiarEstado/{id}(id=${user.id})}"
-                method="post"
-                style="display: inline"
-              >
-                <button type="submit" class="btn btn-secondary">
-                  Cambiar Estado
-                </button>
-              </form>
-            </td>
-            <td>
-              <form
-                th:action="@{/user/cambiarContrasena/{id}(id=${user.id})}"
-                method="post"
-                style="display: inline"
-              >
-                <input
-                  type="password"
-                  name="nuevaContrasena"
-                  placeholder="Nueva Contraseña"
-                  class="form-control"
-                  style="width: auto; display: inline-block"
-                />
-                <button type="submit" class="btn btn-warning">
-                  Cambiar Contraseña
-                </button>
-              </form>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <a href="/CrearUsuario" class="btn btn-primary">Crear Usuario Nuevo</a>
+        <h1>Lista de Usuarios</h1>
+        <table class="custom-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombres</th>
+                    <th>Apellidos</th>
+                    <th>Contraseña</th>
+                    <th>Rol</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="user : ${users}">
+                    <td th:text="${user.idUser}"></td>
+                    <td th:text="${user.username}"></td>
+                    <td th:text="${user.password}"></td>
+                    <td th:text="${user.rol}"></td>
+                    <td th:text="${user.activo ? 'Activo' : 'Desactivado'}"></td>
+                    <td>
+                        <form th:action="@{/user/cambiarEstado/{idUser}(id=${user.idUser})}" method="post" style="display: inline;">
+                            <button type="submit" class="btn btn-secondary">Cambiar Estado</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form th:action="@{/user/cambiarContrasena/{idUser}(id=${user.idUser})}" method="post" style="display: inline;">
+                            <input type="password" name="nuevaContrasena" placeholder="Nueva Contraseña" class="form-control" style="width: auto; display: inline-block;" />
+                            <button type="submit" class="btn btn-warning">Cambiar Contraseña</button>
+                        </form>
+                    </td>                    
+                </tr>
+            </tbody>
+        </table>
+        <a href="/CrearUsuario" class="btn btn-primary">Crear Usuario Nuevo</a>
     </div>
 
     <div class="rectangle-container"></div>

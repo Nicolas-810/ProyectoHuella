@@ -21,52 +21,44 @@
       <a href="/login" class="link">Cerrar sesión</a>
     </div>
     <div class="main-content">
-      <h1>Asignación de Turnos</h1>
-      <table class="custom-table">
-        <thead>
-          <tr>
-            <th>Cédula</th>
-            <th>Nombre Completo</th>
-            <th>Turno Asignado</th>
-            <!-- Nueva columna para mostrar el turno actual -->
-            <th>Acción</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr th:each="employee : ${employees}">
-            <td th:text="${employee.cedula}"></td>
-            <td th:text="${employee.nombreCompleto}"></td>
-            <!-- Mostrar el turno asignado, si no tiene, mostrar "Sin asignar" -->
-            <td th:text="${turnosAsignados[employee.id]}"></td>
-            <!-- Aquí se muestra el turno asignado -->
-            <td>
-              <form method="POST" th:action="@{/asignarTurno}">
-                <input
-                  type="hidden"
-                  name="${_csrf.parameterName}"
-                  value="${_csrf.token}"
-                />
-                <input
-                  type="hidden"
-                  name="employeeId"
-                  th:value="${employee.id}"
-                />
-                <select name="turno" required>
-                  <option value="">Seleccionar turno</option>
-                  <option value="turno 1">Turno 1</option>
-                  <option value="turno 2">Turno 2</option>
-                  <option value="turno 3">Turno 3</option>
-                </select>
-                <button type="submit">Asignar</button>
-              </form>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <div th:if="${error}">
-        <p style="color: red" th:text="${error}"></p>
-      </div>
-    </div>
+        <h1>ASIGNACIÓN DE TURNOS</h1>
+        <table class="custom-table">
+            <thead>
+                <tr>
+                    <th>Cédula</th>
+                    <th>Nombres</th>
+                    <th>Apellidos</th>
+                    <th>Turno Asignado</th> <!-- Nueva columna para mostrar el turno actual -->
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="employee : ${employees}">
+                    <td th:text="${employee.cedula}"></td>
+                    <td th:text="${employee.nombres}"></td>
+                    <td th:text="${employee.apellidos}"></td>
+                    <!-- Mostrar el turno asignado, si no tiene, mostrar "Sin asignar" -->
+                    <td th:text="${turnosAsignados[employee.idEmpleado]}"></td> <!-- Aquí se muestra el turno asignado -->
+                    <td>
+                        <form method="POST" th:action="@{/asignarTurno}">
+                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                            <input type="hidden" name="employeeId" th:value="${employee.idEmpleado}" />
+                            <select name="turno" required>
+                                <option value="">Seleccionar turno</option>
+                                <option value="turno 1">Turno 1</option>
+                                <option value="turno 2">Turno 2</option>
+                                <option value="turno 3">Turno 3</option>
+                            </select>
+                            <button type="submit">Asignar</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div th:if="${error}">
+            <p style="color: red;" th:text="${error}"></p>
+        </div>
+    </div>    
     <div class="rectangle-container">
       <a href="/ExportarTurnos" class="link">Exportar Información</a>
     </div>

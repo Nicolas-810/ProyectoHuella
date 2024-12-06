@@ -14,40 +14,18 @@
     </header>
 
     <div class="main-content">
-      <h1>Editar Empleado</h1>
-      <form
-        th:action="@{/employee/actualizar/{id}(id=${employee.id})}"
-        method="post"
-      >
-        <input
-          type="hidden"
-          name="${_csrf.parameterName}"
-          value="${_csrf.token}"
-        />
-        <input type="hidden" name="id" th:value="${employee.id}" />
-        <label for="cedula">Cédula:</label>
-        <input
-          type="text"
-          id="cedula"
-          name="cedula"
-          th:value="${employee.cedula}"
-        /><br />
-        <label for="nombreCompleto">Nombre Completo:</label>
-        <input
-          type="text"
-          id="nombreCompleto"
-          name="nombreCompleto"
-          th:value="${employee.nombreCompleto}"
-        /><br />
-        <label for="rol">Rol:</label>
-        <input
-          type="text"
-          id="rol"
-          name="rol"
-          th:value="${employee.rol}"
-        /><br />
-        <button type="submit">Actualizar</button>
-      </form>
+        <h1>Editar Empleado</h1>
+        <form th:action="@{/employee/actualizar/{id}(id=${employee.id})}" method="post">
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+            <input type="hidden" name="id" th:value="${employee.id}" />
+            <label for="cedula">Cédula:</label>
+            <input type="text" id="cedula" name="cedula" th:value="${employee.cedula}" /><br>
+            <label for="nombreCompleto">Nombre Completo:</label>
+            <input type="text" id="nombreCompleto" name="nombreCompleto" th:value="${employee.nombreCompleto}" /><br>
+            <label for="rol">Rol:</label>
+            <input type="text" id="rol" name="rol" th:value="${employee.rol}" /><br>
+            <button type="submit">Actualizar</button>
+        </form>
     </div>
 
     <div class="rectangle-container">

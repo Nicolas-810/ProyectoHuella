@@ -5,6 +5,7 @@ import lombok.Setter;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
@@ -21,10 +22,19 @@ import jakarta.persistence.Table;
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idEmpleado;
+
+    @Column (unique = true, name = "Cedula")
     private String cedula;
-    private String nombreCompleto;
-    private String rol;
+
+    @Column (nullable = false, name = "Nombres")
+    private String nombres;
+
+    @Column (nullable = false, name = "Apellidos")
+    private String apellidos;
+
+    @Column (nullable = false, name = "Cargo")
+    private String cargo;
 
     @OneToOne(mappedBy = "employee", cascade = CascadeType.ALL)
     private Turno turnos;
@@ -35,10 +45,13 @@ public class Employee {
     @Override
     public String toString() {
         return "Employee{" +
-                "id=" + id +
+                "idEmpleado'" + idEmpleado +
                 ", cedula='" + cedula + '\'' +
-                ", nombreCompleto='" + nombreCompleto + '\'' +
-                ", rol='" + rol + '\'' +
+                ", nombres='" + nombres + '\'' +
+                ", apellidos'" + apellidos + '\'' +
+                ", cargo='" + cargo + '\'' +
                 '}';
     }
+
+
 }

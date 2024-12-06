@@ -14,33 +14,20 @@
       <img src="Imagen/Logo.png" alt="Segurity" />
     </header>
 
-    <div class="main-content">
-      <h2>CREAR USUARIO NUEVO</h2>
-      <form
-        th:object="${user}"
-        th:action="@{/user/guardar}"
-        method="POST"
-        class="form"
-      >
-        <input
-          type="hidden"
-          name="${_csrf.parameterName}"
-          value="${_csrf.token}"
-        />
+<div class="main-content">
+        <h2>CREAR USUARIO NUEVO</h2>
+     <form th:object="${user}" th:action="@{/user/guardar}" method="POST" class="form">
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
         <div class="form-group">
-          <label for="ID">ID del usuario:</label>
-          <input type="text" id="ID" name="ID" class="form-control" required />
+            <label for="ID">ID del usuario:</label>
+            <input type="text" id="ID" name="ID" class="form-control" required>
         </div>
         <div class="form-group">
-          <label for="username">Nombre de Usuario:</label>
-          <input
-            type="text"
-            id="username"
-            name="username"
-            class="form-control"
-            required
-          />
+            <label for="username">Nombre de Usuario:</label>
+            <input type="text" id="username" name="username" class="form-control" required>
         </div>
+
+        <!-- Campo de Contraseña -->
         <div class="form-group">
           <label for="password">Contraseña:</label>
           <input
@@ -51,6 +38,8 @@
             required
           />
         </div>
+
+        <!-- Campo de Rol -->
         <div class="form-group">
           <label for="Rol">Rol:</label>
           <input
@@ -61,15 +50,26 @@
             required
           />
         </div>
-        <button type="submit" class="btn btn-primary">Agregar Usuario</button>
-      </form>
-    </div>
 
-    <div class="rectangle-container">
-      <a href="/user/EstadoUsuario" class="link">Volver</a>
-    </div>
-    <footer class="footer">
-      <p>&copy; 2030 Todos los derechos reservados</p>
-    </footer>
-  </body>
+        <!-- Lista desplegable de Empleados -->
+        <div class="form-group">
+            <label for="idEmpleado">Selecciona Empleado:</label>
+            <select id="idEmpleado" name="idEmpleado" class="form-control" required>
+                <option value="" disabled selected>Selecciona un empleado</option>
+                <!-- Iterar sobre los empleados y mostrar cada uno como una opción -->
+                <option th:each="employee : ${employees}" th:value="${employee.idEmpleado}" th:text="${employee.nombres}"></option>
+            </select>
+        </div>
+
+        <!-- Botón para agregar el usuario -->
+        <button type="submit" class="btn btn-primary">Agregar Usuario</button>
+     </form>
+</div>
+
+<div class="rectangle-container">
+    <a href="/user/EstadoUsuario" class="link">Volver</a>
+</div>
+
+
+</body>
 </html>
