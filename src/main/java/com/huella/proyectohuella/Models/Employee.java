@@ -24,16 +24,16 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idEmpleado;
 
-    @Column (unique = true, name = "Cedula")
+    @Column(unique = true, name = "Cedula")
     private String cedula;
 
-    @Column (nullable = false, name = "Nombres")
+    @Column(nullable = false, name = "nombres")
     private String nombres;
 
-    @Column (nullable = false, name = "Apellidos")
+    @Column(nullable = false, name = "Apellidos")
     private String apellidos;
 
-    @Column (nullable = false, name = "Cargo")
+    @Column(nullable = false, name = "Cargo")
     private String cargo;
 
     @OneToOne(mappedBy = "employee", cascade = CascadeType.ALL)
@@ -41,7 +41,7 @@ public class Employee {
 
     @OneToOne(mappedBy = "employee", cascade = CascadeType.ALL)
     private User user;
-    
+
     @Override
     public String toString() {
         return "Employee{" +
@@ -52,6 +52,5 @@ public class Employee {
                 ", cargo='" + cargo + '\'' +
                 '}';
     }
-
 
 }

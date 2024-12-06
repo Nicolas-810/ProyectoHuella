@@ -36,23 +36,15 @@ public class UserController {
 
     // Guardar un nuevo usuario
     @PostMapping("/guardar")
-    public String guardarUsuario(@ModelAttribute User user, @RequestParam("idEmpleado") Long idEmpleado, RedirectAttributes redirectAttributes) {
+    public String guardarUsuario(@ModelAttribute User user, RedirectAttributes redirectAttributes) {
         try {
-            // Verificamos si el empleado es null
-            Employee employee = employeeService.findById(idEmpleado);
-            if (employee == null) {
-                throw new IllegalArgumentException("Empleado no encontrado con ID: " + idEmpleado);
-            }
-            
-            user.setEmployee(employee); // Asignar el empleado al usuario
-            userService.create(user); // Crear el usuario
+            userService.create(user); // Crear el usuario sin asignar un empleado
             redirectAttributes.addFlashAttribute("mensaje", "Usuario creado correctamente");
         } catch (Exception e) {
             redirectAttributes.addFlashAttribute("error", "Error al crear usuario: " + e.getMessage());
         }
         return "redirect:/user/EstadoUsuario"; // Redirigir a la lista de usuarios
-    } // Redirigir a la lista de usuarios
-    
+    }
 
     // Listar todos los usuarios
     @GetMapping("/EstadoUsuario")
