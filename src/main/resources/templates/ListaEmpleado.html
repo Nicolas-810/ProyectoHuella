@@ -33,7 +33,7 @@
                     <th>Cédula</th>
                     <th>Nombres</th>
                     <th>Apellidos</th>
-                    <th>Rol</th>
+                    <th>Cargo</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -43,7 +43,7 @@
                     <td th:text="${employee.cedula}"></td>
                     <td th:text="${employee.nombres}"></td>
                     <td th:text="${employee.apellidos}"></td>
-                    <td th:text="${employee.rol}"></td>
+                    <td th:text="${employee.cargo}"></td>
                     <td>
                         <a th:href="@{/employee/editar/{idEmpleado}(id=${employee.idEmpleado})}" class="btn btn-primary">Editar</a>
                         <form th:action="@{/employee/eliminar/{idEmpleado}(idEmpleado=${employee.idEmpleado})}" method="post"

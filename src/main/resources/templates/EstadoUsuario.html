@@ -37,18 +37,18 @@
             </thead>
             <tbody>
                 <tr th:each="user : ${users}">
-                    <td th:text="${user.id}"></td>
+                    <td th:text="${user.idUser}"></td>
                     <td th:text="${user.username}"></td>
                     <td th:text="${user.password}"></td>
                     <td th:text="${user.rol}"></td>
                     <td th:text="${user.activo ? 'Activo' : 'Desactivado'}"></td>
                     <td>
-                        <form th:action="@{/user/cambiarEstado/{id}(id=${user.id})}" method="post" style="display: inline;">
+                        <form th:action="@{/user/cambiarEstado/{idUser}(idUser=${user.idUser})}" method="post" style="display: inline;">
                             <button type="submit" class="btn btn-secondary">Cambiar Estado</button>
                         </form>
                     </td>
                     <td>
-                        <form th:action="@{/user/cambiarContrasena/{id}(id=${user.id})}" method="post" style="display: inline;">
+                        <form th:action="@{/user/cambiarContrasena/{idUser}(idUser=${user.idUser})}" method="post" style="display: inline;">
                             <input type="password" name="nuevaContrasena" placeholder="Nueva Contraseña" class="form-control" style="width: auto; display: inline-block;" />
                             <button type="submit" class="btn btn-warning">Cambiar Contraseña</button>
                         </form>

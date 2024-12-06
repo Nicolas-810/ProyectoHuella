@@ -33,8 +33,8 @@ public class Employee {
     @Column (nullable = false, name = "Apellidos")
     private String apellidos;
 
-    @Column (nullable = false, name = "Rol")
-    private String rol;
+    @Column (nullable = false, name = "Cargo")
+    private String cargo;
 
     @OneToOne(mappedBy = "employee", cascade = CascadeType.ALL)
     private Turno turnos;
@@ -49,7 +49,9 @@ public class Employee {
                 ", cedula='" + cedula + '\'' +
                 ", nombres='" + nombres + '\'' +
                 ", apellidos'" + apellidos + '\'' +
-                ", rol='" + rol + '\'' +
+                ", cargo='" + cargo + '\'' +
                 '}';
     }
+
+
 }

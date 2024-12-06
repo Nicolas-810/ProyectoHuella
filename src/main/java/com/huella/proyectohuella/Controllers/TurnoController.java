@@ -1,8 +1,10 @@
 package com.huella.proyectohuella.Controllers;
 
 import com.huella.proyectohuella.Models.Employee;
+import com.huella.proyectohuella.Models.EmployeexTurno;
 import com.huella.proyectohuella.Models.Turno;
 import com.huella.proyectohuella.Services.EmployeeService;
+import com.huella.proyectohuella.Services.EmployeexTurnoService;
 import com.huella.proyectohuella.Services.ExportService;
 import com.huella.proyectohuella.Services.TurnoService;
 import jakarta.servlet.http.HttpServletResponse;
@@ -25,11 +27,13 @@ public class TurnoController {
     private final TurnoService turnoService;
     private final EmployeeService employeeService;
     private final ExportService exportService;
+    private final EmployeexTurnoService employeexTurnoService;
 
-    public TurnoController(TurnoService turnoService, EmployeeService employeeService, ExportService exportService) {
+    public TurnoController(TurnoService turnoService, EmployeeService employeeService, ExportService exportService, EmployeexTurnoService employeexTurnoService) {
         this.turnoService = turnoService;
         this.employeeService = employeeService;
         this.exportService = exportService;
+        this.employeexTurnoService = employeexTurnoService;
     }
 
     @GetMapping("/crearturnos")
@@ -76,6 +80,13 @@ public class TurnoController {
         nuevoTurno.setTurno(turno);
         nuevoTurno.setFechaAsignacion(LocalDateTime.now());  // Establecer la fecha actual
         turnoService.create(nuevoTurno);
+
+        EmployeexTurno employeexTurno = new EmployeexTurno();
+        employeexTurno.setEmployee(empleado);
+        employeexTurno.setTurno(nuevoTurno);
+        employeexTurno.setFechaAsignacion(LocalDateTime.now());
+
+        employeexTurnoService.create(employeexTurno);
     
         return "redirect:/crearturnos";
     }
