@@ -15,7 +15,7 @@
 
     <div class="main-content">
         <h1>Editar Empleado</h1>
-        <form th:action="@{/employee/actualizar/{idEmpleado}(id=${employee.idEmpleado})}" method="post">
+        <form th:action="@{/employee/actualizar/{idEmpleado}(idEmpleado=${employee.idEmpleado})}" method="post">
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
             <input type="hidden" name="idEmpleado" th:value="${employee.idEmpleado}" />
             <label for="cedula">Cédula:</label>
