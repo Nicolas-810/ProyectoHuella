@@ -1,45 +1,64 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sistema De Control login</title>
-  <link rel="icon" type="image/png" href="Imagen/ico.png">
-  <link rel="stylesheet" href="css/login.css">
-  <style>
-    img.icono-usuario {
-      width: 16px; 
-      height: 16px; 
-      vertical-align: middle; 
-    }
-  </style>
-</head>
-<body>
-
-<div class="login-container">
-  <div class="title-container">
-    <label id="title">USER LOGIN</label>
-  </div>
-  <p></p>
-  <form id="login-form" method="post">
-    <p></p>
-    <div class="form-group">
-      <label for="username" style="font-size: 12px;"><img src="imagen/circle-user-solid.svg" alt="Icono usuario" class="icono-usuario"> Cliente administrativo</label>
-      <input type="text" id="username" name="username" placeholder="Ingrese su usuario" required> 
-    </div>
-    <p></p>
-    <div class="form-group">
-      <input type="password" id="password" name="password" placeholder="Ingrese su contraseña" required> 
-    </div>
-    <div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sistema De Control login</title>
+    <link rel="icon" type="image/png" href="Imagen/ico.png" />
+    <link rel="stylesheet" href="css/login.css" />
+    <style>
+      img.icono-usuario {
+        width: 16px;
+        height: 16px;
+        vertical-align: middle;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="login-container">
+      <div class="title-container">
+        <label id="title">USER LOGIN</label>
+      </div>
       <p></p>
+      <form id="login-form" method="post">
+        <p></p>
+        <div class="form-group">
+          <label for="username" style="font-size: 12px"
+            ><img
+              src="imagen/circle-user-solid.svg"
+              alt="Icono usuario"
+              class="icono-usuario"
+            />
+            Cliente administrativo</label
+          >
+          <input
+            type="text"
+            id="username"
+            name="username"
+            placeholder="Ingrese su usuario"
+            required
+          />
+        </div>
+        <p></p>
+        <div class="form-group">
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Ingrese su contraseña"
+            required
+          />
+        </div>
+        <div>
+          <p></p>
+        </div>
+        <button style="font-size: 14px" type="submit">Iniciar Sesión</button>
+      </form>
+      <p id="login-message">
+        <span style="color: red" th:if="${error}"
+          >Error: <span th:text="${error}"></span
+        ></span>
+      </p>
     </div>
-    <button style="font-size: 14px;" type="submit">Iniciar Sesión</button>
-  </form>
-  <p id="login-message">
-    <span style="color: red;" th:if="${error}">Error: <span th:text="${error}"></span></span>
-  </p>
-</div>
-
-</body>
+  </body>
 </html>

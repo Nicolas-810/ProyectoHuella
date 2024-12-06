@@ -37,10 +37,15 @@ public class ExportServiceImpl implements ExportService {
 
         // Crear el encabezado de la tabla
         Row headerRow = sheet.createRow(0);
-        headerRow.createCell(0).setCellValue("ID");
-        headerRow.createCell(1).setCellValue("Empleado");
-        headerRow.createCell(2).setCellValue("Turno");
-        headerRow.createCell(3).setCellValue("Fecha Asignación");
+        headerRow.createCell(0).setCellValue("Empleado");
+        headerRow.createCell(1).setCellValue("Turno");
+        headerRow.createCell(2).setCellValue("Lunes");
+        headerRow.createCell(3).setCellValue("Martes");
+        headerRow.createCell(4).setCellValue("Miércoles");
+        headerRow.createCell(5).setCellValue("Jueves");
+        headerRow.createCell(6).setCellValue("Viernes");
+        headerRow.createCell(7).setCellValue("Sábado");
+        headerRow.createCell(8).setCellValue("Domingo");
 
         // Rellenar las filas con los datos de los turnos
         int rowNum = 1;
@@ -48,7 +53,6 @@ public class ExportServiceImpl implements ExportService {
             Row row = sheet.createRow(rowNum++);
             row.createCell(0).setCellValue(turno.getId());
             row.createCell(1).setCellValue(turno.getEmployee().getNombres());  // Suponiendo que el modelo Employee tiene un campo nombre
-            row.createCell(1).setCellValue(turno.getEmployee().getApellidos());  // Suponiendo que el modelo Employee tiene un campo nombre
             row.createCell(2).setCellValue(turno.getTurno());
             row.createCell(3).setCellValue(turno.getFechaAsignacion().toString());
         }

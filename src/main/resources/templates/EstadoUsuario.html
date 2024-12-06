@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sistema de Control - Lista de Usuarios</title>
-    <link rel="icon" type="image/png" href="/Imagen/ico.png">
-    <link rel="stylesheet" href="/Css/base1.css">
-    <link rel="stylesheet" href="/Css/base2.css">
-    <link rel="stylesheet" href="/Css/tabla.css">
-</head>
-<body>
+    <link rel="icon" type="image/png" href="/Imagen/ico.png" />
+    <link rel="stylesheet" href="/Css/base1.css" />
+    <link rel="stylesheet" href="/Css/base2.css" />
+    <link rel="stylesheet" href="/Css/tabla.css" />
+  </head>
+  <body>
     <header>
-        <img src="/Imagen/Logo.png" alt="Segurity" />
+      <img src="/Imagen/Logo.png" alt="Segurity" />
     </header>
 
     <div class="navigation-container">
-        <a href="/inicio" class="link">Inicio</a>
-        <a href="/crearturnos" class="link">Turnos</a>
-        <a href="/employee/lista" class="link">Lista Empleados</a>
-        <a href="/user/EstadoUsuario" class="link">Lista Usuario</a>
-        <a href="/login" class="link">Cerrar sesión</a>
+      <a href="/inicio" class="link">Inicio</a>
+      <a href="/crearturnos" class="link">Turnos</a>
+      <a href="/employee/lista" class="link">Lista Empleados</a>
+      <a href="/user/EstadoUsuario" class="link">Lista Usuario</a>
+      <a href="/login" class="link">Cerrar sesión</a>
     </div>
 
     <div class="main-content">
@@ -28,7 +28,8 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Nombre de Usuario</th>
+                    <th>Nombres</th>
+                    <th>Apellidos</th>
                     <th>Contraseña</th>
                     <th>Rol</th>
                     <th>Estado</th>
@@ -43,12 +44,12 @@
                     <td th:text="${user.rol}"></td>
                     <td th:text="${user.activo ? 'Activo' : 'Desactivado'}"></td>
                     <td>
-                        <form th:action="@{/user/cambiarEstado/{idUser}(idUser=${user.idUser})}" method="post" style="display: inline;">
+                        <form th:action="@{/user/cambiarEstado/{idUser}(id=${user.idUser})}" method="post" style="display: inline;">
                             <button type="submit" class="btn btn-secondary">Cambiar Estado</button>
                         </form>
                     </td>
                     <td>
-                        <form th:action="@{/user/cambiarContrasena/{idUser}(idUser=${user.idUser})}" method="post" style="display: inline;">
+                        <form th:action="@{/user/cambiarContrasena/{idUser}(id=${user.idUser})}" method="post" style="display: inline;">
                             <input type="password" name="nuevaContrasena" placeholder="Nueva Contraseña" class="form-control" style="width: auto; display: inline-block;" />
                             <button type="submit" class="btn btn-warning">Cambiar Contraseña</button>
                         </form>
@@ -59,7 +60,9 @@
         <a href="/CrearUsuario" class="btn btn-primary">Crear Usuario Nuevo</a>
     </div>
 
-    <div class="rectangle-container">
-    </div>
-</body>
+    <div class="rectangle-container"></div>
+    <footer class="footer">
+      <p>&copy; 2030 Todos los derechos reservados</p>
+    </footer>
+  </body>
 </html>

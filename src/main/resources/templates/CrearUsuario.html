@@ -1,41 +1,54 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sistema de Control - Crear Usuario</title>
-    <link rel="icon" type="image/png" href="Imagen/ico.png">
-    <link rel="stylesheet"  href="Css/base1.css">
-    <link rel="stylesheet"  href="Css/base2.css">
-</head>
+    <link rel="icon" type="image/png" href="Imagen/ico.png" />
+    <link rel="stylesheet" href="Css/base1.css" />
+    <link rel="stylesheet" href="Css/base2.css" />
+  </head>
 
-<body>
-
-<header>
-    <img src="Imagen/Logo.png" alt="Segurity" />
-</header>
+  <body>
+    <header>
+      <img src="Imagen/Logo.png" alt="Segurity" />
+    </header>
 
 <div class="main-content">
-    <h2>CREAR USUARIO NUEVO</h2>
-    <form th:object="${user}" th:action="@{/user/guardar}" method="POST" class="form">
+        <h2>CREAR USUARIO NUEVO</h2>
+     <form th:object="${user}" th:action="@{/user/guardar}" method="POST" class="form">
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-        
-        <!-- Campo de Email -->
         <div class="form-group">
-            <label for="username">Email:</label>
+            <label for="ID">ID del usuario:</label>
+            <input type="text" id="ID" name="ID" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="username">Nombre de Usuario:</label>
             <input type="text" id="username" name="username" class="form-control" required>
         </div>
 
         <!-- Campo de Contraseña -->
         <div class="form-group">
-            <label for="password">Contraseña:</label>
-            <input type="password" id="password" name="password" class="form-control" required>
+          <label for="password">Contraseña:</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            class="form-control"
+            required
+          />
         </div>
 
         <!-- Campo de Rol -->
         <div class="form-group">
-            <label for="Rol">Rol:</label>
-            <input type="text" id="Rol" name="Rol" class="form-control" required>
+          <label for="Rol">Rol:</label>
+          <input
+            type="text"
+            id="Rol"
+            name="Rol"
+            class="form-control"
+            required
+          />
         </div>
 
         <!-- Lista desplegable de Empleados -->
@@ -50,12 +63,13 @@
 
         <!-- Botón para agregar el usuario -->
         <button type="submit" class="btn btn-primary">Agregar Usuario</button>
-    </form>
+     </form>
 </div>
 
 <div class="rectangle-container">
     <a href="/user/EstadoUsuario" class="link">Volver</a>
 </div>
+
 
 </body>
 </html>
