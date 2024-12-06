@@ -16,7 +16,7 @@ public class LoginController {
         this.loginService = loginService;
     }
 
-    @PostMapping("/login")
+    @PostMapping("/")
     public String processLogin(@RequestParam String username, @RequestParam String password, Model model) {
         boolean authenticated = loginService.authenticate(username, password);
         if (authenticated) {
