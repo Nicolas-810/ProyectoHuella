@@ -1,0 +1,44 @@
+name: CI Workflow
+
+on:
+  push:
+    branches:
+      - main 
+  pull_request:
+    branches:
+      - main  
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest  # Ejecutar en un contenedor de Ubuntu
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3  # Checkout del código
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'  # Usa la versión de Node.js que prefieras
+
+      - name: Install dependencies
+        run: npm install  # Instalar dependencias de tu proyecto
+
+      - name: Run Linter
+        run: npm run lint  # Ejecutar linter. Cambia el comando si usas otro linter.
+
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Tests
+        run: npm test  
