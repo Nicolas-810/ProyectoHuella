@@ -28,8 +28,7 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Nombres</th>
-                    <th>Apellidos</th>
+                    <th>Email</th>
                     <th>Contraseña</th>
                     <th>Rol</th>
                     <th>Estado</th>
@@ -44,12 +43,12 @@
                     <td th:text="${user.rol}"></td>
                     <td th:text="${user.activo ? 'Activo' : 'Desactivado'}"></td>
                     <td>
-                        <form th:action="@{/user/cambiarEstado/{idUser}(id=${user.idUser})}" method="post" style="display: inline;">
+                        <form th:action="@{/user/cambiarEstado/{idUser}(idUser=${user.idUser})}" method="post" style="display: inline;">
                             <button type="submit" class="btn btn-secondary">Cambiar Estado</button>
                         </form>
                     </td>
                     <td>
-                        <form th:action="@{/user/cambiarContrasena/{idUser}(id=${user.idUser})}" method="post" style="display: inline;">
+                        <form th:action="@{/user/cambiarContrasena/{idUser}(idUser=${user.idUser})}" method="post" style="display: inline;">
                             <input type="password" name="nuevaContrasena" placeholder="Nueva Contraseña" class="form-control" style="width: auto; display: inline-block;" />
                             <button type="submit" class="btn btn-warning">Cambiar Contraseña</button>
                         </form>
