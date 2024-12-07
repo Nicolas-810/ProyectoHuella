@@ -44,7 +44,12 @@
                       th:value="${empleado.idEmpleado}" 
                       th:text="${empleado.nombres}">Empleado</option>
           </select>
+          <!-- Agregar un div para verificar si la lista de empleados está siendo pasada -->
+          <div th:if="${#lists.isEmpty(employees)}">
+              <p>No hay empleados disponibles</p>
+          </div>
       </div>
+      
       
 
 

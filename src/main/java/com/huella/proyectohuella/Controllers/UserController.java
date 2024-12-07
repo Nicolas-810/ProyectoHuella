@@ -33,8 +33,6 @@ public class UserController {
         model.addAttribute("accion", "/user/guardar"); // Acción del formulario
         return "inicio"; // Vista donde se muestra el formulario
     }
-
-    // Guardar un nuevo usuario
     @PostMapping("/guardar")
     public String guardarUsuario(@ModelAttribute User user, @RequestParam("idEmpleado") Long idEmpleado, RedirectAttributes redirectAttributes) {
         try {
