@@ -36,24 +36,6 @@
           <input type="text" id="Rol" name="Rol" class="form-control" required />
         </div>
 
-        <div class="form-group">
-          <label for="idEmpleado">Empleado:</label>
-          <select id="idEmpleado" name="idEmpleado" class="form-control" required>
-              <option value="" disabled selected>Seleccione un empleado</option>
-              <option th:each="empleado : ${employees}" 
-                      th:value="${empleado.idEmpleado}" 
-                      th:text="${empleado.nombres}">Empleado</option>
-          </select>
-          <!-- Agregar un div para verificar si la lista de empleados está siendo pasada -->
-          <div th:if="${#lists.isEmpty(employees)}">
-              <p>No hay empleados disponibles</p>
-          </div>
-      </div>
-      
-      
-
-
-
         <button type="submit" class="btn btn-primary">Agregar Usuario</button>
       </form>
     </div>
